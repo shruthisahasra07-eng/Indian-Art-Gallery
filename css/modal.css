@@ -1,0 +1,412 @@
+/**
+ * KALAKRITI - Masterclass Detail Modal Styling
+ * Historical Odyssey, Beginner Supply Kit, Steps Workflow, Palette Swatches
+ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  background: rgba(8, 9, 12, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-dialog {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 1100px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--gold-glow);
+  animation: modalEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalEnter {
+  from {
+    transform: translateY(30px) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal Header Hero */
+.modal-hero-bar {
+  display: grid;
+  grid-template-columns: 240px 1fr auto;
+  gap: 24px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 24px 28px;
+  align-items: center;
+  position: relative;
+}
+
+.modal-hero-img-wrap {
+  width: 100%;
+  height: 140px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: #111;
+}
+
+.modal-hero-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-hero-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-hero-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.modal-hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.modal-hero-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.modal-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: var(--crimson-sindoor);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* Modal Nav Tabs */
+.modal-tabs-nav {
+  display: flex;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 28px;
+  overflow-x: auto;
+}
+
+.tab-nav-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 14px 20px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-nav-btn:hover {
+  color: var(--text-primary);
+}
+
+.tab-nav-btn.active {
+  color: var(--gold-primary);
+  border-bottom-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+/* Modal Body Content Area */
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 36px;
+}
+
+.modal-tab-content {
+  display: none;
+}
+
+.modal-tab-content.active {
+  display: block;
+}
+
+/* Tab 1: Historical Odyssey Styling */
+.history-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.history-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.history-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.history-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Tab 2: Beginner Masterclass Styling */
+.masterclass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.supplies-dual-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.supplies-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.supplies-box h4 {
+  font-size: 0.95rem;
+  color: var(--gold-primary);
+  margin-bottom: 14px;
+}
+
+.supplies-checklist {
+  list-style: none;
+}
+
+.supplies-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.supplies-checklist input[type="checkbox"] {
+  accent-color: var(--gold-primary);
+  margin-top: 4px;
+}
+
+/* Palette Swatches Row */
+.palette-section-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--gold-light);
+  margin-bottom: 14px;
+}
+
+.modal-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.swatch-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.swatch-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.swatch-square {
+  width: 38px;
+  height: 38px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.swatch-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.swatch-info strong {
+  font-size: 0.82rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.swatch-info code {
+  font-size: 0.72rem;
+  color: var(--gold-light);
+}
+
+.swatch-info small {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Step-by-Step Cards */
+.steps-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.step-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  border-left: 4px solid var(--gold-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 20px 24px;
+  display: flex;
+  gap: 18px;
+}
+
+.step-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  color: #0d0e11;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-details h4 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.step-details p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Pro-Tips Box */
+.protips-alert {
+  background: rgba(27, 107, 82, 0.15);
+  border: 1px solid rgba(27, 107, 82, 0.4);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.protips-alert h4 {
+  color: #4ade80;
+  font-size: 0.98rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.protips-alert ul {
+  padding-left: 20px;
+  color: #d1fae5;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* Responsive Modal */
+@media (max-width: 800px) {
+  .modal-hero-bar {
+    grid-template-columns: 1fr;
+  }
+  .modal-hero-img-wrap {
+    display: none;
+  }
+  .history-grid, .supplies-dual-col {
+    grid-template-columns: 1fr;
+  }
+}

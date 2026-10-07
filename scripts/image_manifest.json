@@ -1,0 +1,21 @@
+{
+  "madhubani": "assets/images/madhubani.jpg",
+  "warli": "assets/images/warli.jpg",
+  "tanjore": "assets/images/tanjore.jpg",
+  "pattachitra": "assets/images/pattachitra.jpg",
+  "kalamkari": "assets/images/kalamkari.jpg",
+  "pichwai": "assets/images/pichwai.jpg",
+  "kalighat": "assets/images/kalighat.jpg",
+  "mughal": "assets/images/mughal.jpg",
+  "kangra": "assets/images/kangra.jpg",
+  "saura": "assets/images/saura.jpg",
+  "thangka": "assets/images/thangka.jpg",
+  "aipan": "assets/images/aipan.jpg",
+  "sanjhi": "assets/images/sanjhi.jpg",
+  "mysore": "assets/images/mysore.jpg",
+  "mandana": "assets/images/mandana.jpg",
+  "basohli": "assets/images/basohli.jpg",
+  "chamba_rumal": "assets/images/chamba_rumal.jpg",
+  "company_style": "assets/images/company_style.jpg",
+  "alpana": "assets/images/alpana.jpg"
+}

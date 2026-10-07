@@ -1,0 +1,223 @@
+/**
+ * KALAKRITI - Design System & Master Typography
+ * Imperial Indian Heritage Aesthetics • Luxury Obsidian & Temple Gold Palette
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Royal Palette */
+  --bg-primary: #0a0b0e;
+  --bg-secondary: #12141a;
+  --bg-tertiary: #191c24;
+  --bg-glass: rgba(18, 20, 26, 0.78);
+  --bg-glass-card: rgba(25, 28, 36, 0.65);
+
+  --text-primary: #f8f6f0;
+  --text-secondary: #c2beaf;
+  --text-muted: #8c887b;
+
+  /* Gold & Heritage Jewels */
+  --gold-primary: #d4af37;
+  --gold-light: #f5d77f;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+  --gold-dark: #997819;
+
+  --terracotta: #c84a28;
+  --terracotta-glow: rgba(200, 74, 40, 0.3);
+  --crimson-sindoor: #b82828;
+  --indigo-deep: #1e3d59;
+  --emerald-temple: #1b6b52;
+  --peacock-teal: #178385;
+
+  /* Borders & Surfaces */
+  --border-subtle: rgba(212, 175, 55, 0.18);
+  --border-highlight: rgba(212, 175, 55, 0.45);
+  --border-glass: rgba(255, 255, 255, 0.08);
+
+  /* Fonts */
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+
+  /* Layout & Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Shadows & Depth */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 0 25px rgba(212, 175, 55, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at 50% 0%, #1a1610 0%, #0a0b0e 65%);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Ambient Glow Orbs */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(140px);
+  z-index: 0;
+  opacity: 0.18;
+}
+
+.glow-1 {
+  width: 550px;
+  height: 550px;
+  background: var(--gold-primary);
+  top: -120px;
+  left: 10%;
+}
+
+.glow-2 {
+  width: 650px;
+  height: 650px;
+  background: var(--terracotta);
+  top: 40%;
+  right: -150px;
+}
+
+.glow-3 {
+  width: 500px;
+  height: 500px;
+  background: var(--indigo-deep);
+  bottom: 10%;
+  left: -100px;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff2cc 0%, #d4af37 50%, #aa821e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.terracotta-gradient-text {
+  background: linear-gradient(135deg, #ff9575 0%, #c84a28 60%, #8c2a10 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #d4af37 0%, #b38e22 100%);
+  color: #0d0e11;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+  font-weight: 700;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #f5d77f 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.5);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.btn-outline:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  transform: scale(1.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e3b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}

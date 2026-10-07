@@ -1,0 +1,721 @@
+/**
+ * KALAKRITI - New Features Stylesheet
+ * 1. Real Masterpiece Ideas & Inspiration Gallery
+ * 2. Interactive Video Chapters Navigation
+ * 3. AI Artisan Muse Generative Studio
+ * 4. Virtual Heritage Living Room & Wall AR Previewer
+ */
+
+/* ==========================================================================
+   1. REAL MASTERPIECE IDEAS GALLERY (TAB 4 IN MODAL)
+   ========================================================================== */
+.ideas-tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ideas-tab-subtitle {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-top: 4px;
+}
+
+.masterpiece-ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+.idea-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.idea-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--gold-glow);
+}
+
+.idea-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.idea-theme-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-light);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.idea-diff-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.idea-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-top: 6px;
+}
+
+.idea-native-title {
+  font-size: 0.88rem;
+  color: var(--gold-primary);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.idea-composition-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  border-left: 3px solid var(--gold-primary);
+}
+
+.idea-composition-box strong {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+
+.idea-composition-box p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.idea-meaning-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.idea-palette-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.idea-palette-row span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.idea-swatch-list {
+  display: flex;
+  gap: 6px;
+}
+
+.idea-swatch-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.idea-swatch-dot:hover {
+  transform: scale(1.25);
+}
+
+.idea-card-footer {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   2. INTERACTIVE VIDEO CHAPTERS BAR
+   ========================================================================== */
+.video-chapters-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin;
+}
+
+.video-chapter-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.video-chapter-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--text-primary);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.video-chapter-btn.active {
+  background: var(--gold-primary);
+  color: #0d0e11;
+  font-weight: 700;
+  box-shadow: 0 2px 8px var(--gold-glow);
+}
+
+/* ==========================================================================
+   3. AI ARTISAN MUSE MODAL & RESULTS
+   ========================================================================== */
+.ai-muse-dialog {
+  max-width: 940px;
+  width: 95%;
+}
+
+.ai-muse-hero-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(13, 14, 17, 0.95));
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.ai-muse-icon {
+  font-size: 2.2rem;
+  background: rgba(212, 175, 55, 0.2);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold-primary);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.ai-muse-desc {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-top: 4px;
+}
+
+.ai-muse-body {
+  padding: 28px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.ai-muse-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.ai-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ai-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.ai-form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ai-select, .ai-input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ai-select:focus, .ai-input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.ai-action-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.ai-generate-btn {
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px var(--gold-glow);
+}
+
+/* AI Result Display Card */
+.ai-result-card {
+  background: var(--bg-primary);
+  border: 2px solid var(--gold-primary);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--gold-glow);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.ai-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 18px;
+}
+
+.ai-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--gold-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.ai-concept-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.ai-concept-native {
+  font-size: 1.05rem;
+  color: var(--gold-primary);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.ai-narrative-box, .ai-blueprint-box, .ai-palette-box, .ai-steps-box, .ai-tips-box {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  border-left: 3px solid var(--gold-primary);
+}
+
+.ai-narrative-box h4, .ai-blueprint-box h4, .ai-palette-box h4, .ai-steps-box h4, .ai-tips-box h4 {
+  font-size: 0.88rem;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.ai-narrative-box p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ai-blueprint-box ul, .ai-tips-box ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.ai-blueprint-box li, .ai-tips-box li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+
+.ai-palette-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ai-swatch-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-tertiary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+}
+
+.ai-swatch-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.ai-swatch-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-swatch-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ai-swatch-hex {
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: var(--text-muted);
+}
+
+.ai-execution-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ai-step-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.ai-step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  color: #0d0e11;
+  font-weight: 700;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-step-content strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.ai-step-content p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. VIRTUAL HERITAGE WALL & AR PREVIEWER
+   ========================================================================== */
+.wall-preview-dialog {
+  max-width: 1100px;
+  width: 95%;
+}
+
+.wall-hero-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.wall-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.wall-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wall-body-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Room Wall Stage */
+.wall-stage-container {
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6), 0 15px 40px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.4s ease;
+}
+
+.wall-ambient-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  pointer-events: none;
+}
+
+.wall-lamp-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: 320px;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 230, 160, 0.4), transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.wall-lamp-glow.light-warm {
+  background: radial-gradient(circle at 50% 0%, rgba(255, 170, 70, 0.5), transparent 70%);
+}
+
+.wall-lamp-glow.light-daylight {
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.3), transparent 70%);
+}
+
+/* Framed Artwork */
+.wall-frame-wrapper {
+  position: relative;
+  z-index: 5;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wall-matboard {
+  background: #FFFBF5;
+  padding: 18px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wall-matboard img {
+  display: block;
+  max-height: 280px;
+  max-width: 380px;
+  object-fit: contain;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Frame Finish Styles */
+.wall-frame-wrapper.frame-gold {
+  border: 14px solid #C59B27;
+  border-image: linear-gradient(135deg, #FFDF73, #B8860B, #FFDF73, #8B6508) 1;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+.wall-frame-wrapper.frame-teak {
+  border: 16px solid #2E1A11;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+}
+
+.wall-frame-wrapper.frame-minimal {
+  border: 6px solid #111111;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Frame Sizes */
+.wall-frame-wrapper.size-compact .wall-matboard img {
+  max-height: 190px;
+  max-width: 260px;
+}
+
+.wall-frame-wrapper.size-collector .wall-matboard img {
+  max-height: 260px;
+  max-width: 360px;
+}
+
+.wall-frame-wrapper.size-grand .wall-matboard img {
+  max-height: 330px;
+  max-width: 480px;
+}
+
+/* Plaque */
+.wall-brass-plaque {
+  margin-top: 8px;
+  background: #0E0C09;
+  border: 1px solid #D4AF37;
+  padding: 3px 14px;
+  border-radius: 2px;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: #D4AF37;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Furniture silhouette */
+.wall-furniture-credenza {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 540px;
+  height: 48px;
+  background: #140E0A;
+  border-top: 4px solid #2B1D15;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Wall Controls Bar */
+.wall-controls-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.wall-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wall-control-group label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+}
+
+.wall-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wall-pill {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wall-pill:hover {
+  border-color: var(--gold-primary);
+  color: var(--text-primary);
+}
+
+.wall-pill.active {
+  background: var(--gold-primary);
+  color: #0d0e11;
+  font-weight: 700;
+}
+
+.wall-color-swatches {
+  display: flex;
+  gap: 8px;
+}
+
+.wall-color-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.wall-color-btn:hover {
+  transform: scale(1.25);
+  border-color: var(--gold-primary);
+}
+
+@media (max-width: 800px) {
+  .masterpiece-ideas-grid {
+    grid-template-columns: 1fr;
+  }
+  .wall-stage-container {
+    height: 360px;
+  }
+  .wall-frame-wrapper.size-grand .wall-matboard img {
+    max-height: 220px;
+  }
+}

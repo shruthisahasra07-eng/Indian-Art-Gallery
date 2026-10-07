@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KALAKRITI | National Digital Indian Art Gallery & Beginner Masterclasses</title>
+  <meta name="description" content="Explore 35 authentic traditional art forms of India. Discover rich histories, sacred symbolism, and beginner painting masterclasses with interactive canvas demos and live tutorials.">
+  <meta name="keywords" content="Indian Art, Madhubani, Warli, Tanjore, Pattachitra, Kalamkari, Gond, Pichwai, Traditional Paintings of India, Art Tutorials, Indian Culture">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2224%22>🪷</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/studio.css">
+  <link rel="stylesheet" href="css/features.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- SITE HEADER / NAVBAR -->
+  <header class="site-header" id="mainHeader">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" aria-label="Kalakriti Home">
+        <div class="brand-symbol">🪷</div>
+        <div class="brand-text">
+          <span class="brand-title">KALAKRITI</span>
+          <span class="brand-subtitle">कलाकृति • Indian Art Heritage</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" id="audioAmbienceBtn" title="Toggle Meditative Tanpura Ambience">
+          🎵 Ambient Tanpura
+        </button>
+        <button class="btn btn-gold" id="openAIMuseBtn" onclick="app.openAIMuseModal()" title="AI Artisan Muse - Generate Creative Painting Ideas">
+          ✨ AI Artisan Muse
+        </button>
+        <button class="btn btn-outline" id="openWallPreviewBtn" onclick="app.openWallPreview()" title="Preview Art on Luxury Interior Walls">
+          🏛️ Wall AR Preview
+        </button>
+        <button class="btn btn-outline" id="quizLauncherBtn" onclick="openQuizModal()">
+          🔮 Art Soul Quiz
+        </button>
+        <button class="btn btn-outline" id="openExhibitionBtn">
+          🏛️ Exhibition
+        </button>
+        <button class="btn btn-icon" id="favDrawerOpenBtn" title="Saved Curation" aria-label="View Saved Art">
+          ★
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="heroSection">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-pill">
+              <span>✦</span> Anant Kala Parampara • 5,000 Years of Living Genius
+            </div>
+            <h1 class="hero-title">
+              The Grand Living Gallery of <span class="gold-gradient-text">Indian Art</span>
+            </h1>
+            <p class="hero-description">
+              Journey across thirty-five peerless classical, tribal, and royal painting lineages of India. From the mud walls of Mithila and the sacred scroll operas of Rajasthan to temple gold reliefs of Thanjavur—discover deep histories and master every stroke with interactive live studio tutorials.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#discoveryHub" class="btn btn-gold">
+                🪷 Explore 35 Art Traditions
+              </a>
+              <button class="btn btn-gold" onclick="app.openAIMuseModal()">
+                ✨ AI Art Idea Generator
+              </button>
+              <button class="btn btn-outline" onclick="app.openArtModal('madhubani', 'demo')">
+                🎬 Real Painting Masterclass
+              </button>
+              <button class="btn btn-outline" onclick="app.openWallPreview()">
+                🏛️ Wall AR Preview
+              </button>
+              <button class="btn btn-outline" onclick="openQuizModal()">
+                🔮 Art Soul Quiz
+              </button>
+            </div>
+
+            <!-- Statistics Banner -->
+            <div class="stats-banner">
+              <div class="stat-item">
+                <span class="stat-number" id="statTotalArts">35+</span>
+                <span class="stat-label">Art Traditions</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">28</span>
+                <span class="stat-label">States & Regions</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">5,000+</span>
+                <span class="stat-label">Years Recorded Antiquity</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Free Beginner Studio</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Media Showcase -->
+          <div class="hero-media-wrap">
+            <div class="hero-frame">
+              <img src="assets/images/hero_banner.jpg" alt="Kalakriti Indian Art National Exhibition" id="heroBannerImg" />
+              <div class="hero-frame-caption">
+                <div>
+                  <h3 class="caption-title">Rashtriya Kala Sangraha</h3>
+                  <p class="caption-desc">Curated Masterworks Across All Indian States</p>
+                </div>
+                <button class="btn btn-gold" onclick="app.openArtModal('tanjore', 'history')">
+                  View Spotlight
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCOVERY & FILTER HUB -->
+    <section class="discovery-section" id="discoveryHub">
+      <div class="container">
+        <div class="filter-card">
+          <!-- Search Row -->
+          <div class="search-row">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="artSearchInput" placeholder="Search by art form name, state (e.g. Bihar, Kerala), motif (e.g. Peacock, Lotus), medium, or era..." />
+              <button class="search-clear-btn" id="searchClearBtn">✕</button>
+            </div>
+
+            <div class="filter-selects">
+              <select class="filter-select" id="categoryFilter" aria-label="Filter by Category">
+                <option value="all">All Categories</option>
+                <option value="Folk & Tribal">Folk & Tribal</option>
+                <option value="Royal Miniature">Royal Miniature</option>
+                <option value="Temple & Devotional">Temple & Devotional</option>
+                <option value="Scroll Storytelling">Scroll Storytelling</option>
+                <option value="Floor & Wall Ritual">Floor & Wall Ritual</option>
+              </select>
+
+              <select class="filter-select" id="difficultyFilter" aria-label="Filter by Difficulty">
+                <option value="all">All Skill Levels</option>
+                <option value="Beginner">Beginner Friendly</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Master Artisan</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Region Filter Pills -->
+          <div class="region-pills-row">
+            <div class="pills-group">
+              <button class="pill-btn active" data-filter-region="all">All India (35)</button>
+              <button class="pill-btn" data-filter-region="East">East (8)</button>
+              <button class="pill-btn" data-filter-region="West">West (6)</button>
+              <button class="pill-btn" data-filter-region="South">South (6)</button>
+              <button class="pill-btn" data-filter-region="North">North (8)</button>
+              <button class="pill-btn" data-filter-region="Central">Central (4)</button>
+              <button class="pill-btn" data-filter-region="Himalayan">Himalayan (3)</button>
+            </div>
+            <span class="results-count" id="galleryCountBadge">35 Art Forms Found</span>
+          </div>
+        </div>
+
+        <!-- MASTERPIECES GALLERY GRID -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MASTERCLASS DETAIL & CANVAS MODAL -->
+  <div class="modal-overlay" id="artModal">
+    <div class="modal-dialog">
+      <!-- Modal Header Hero Bar -->
+      <div class="modal-hero-bar">
+        <div class="modal-hero-img-wrap">
+          <img src="" alt="" id="modalHeroImg" />
+        </div>
+        <div class="modal-hero-info">
+          <div class="modal-hero-meta">
+            <span id="modalState">📍 State</span>
+            <span id="modalEra">⏳ Era</span>
+            <span id="modalGI">🛡️ GI Tagged</span>
+          </div>
+          <h2 class="modal-hero-title gold-gradient-text" id="modalTitle">Art Form Title</h2>
+        </div>
+        <div class="modal-actions-right">
+          <button class="btn btn-outline" onclick="app.openWallPreview()" title="Preview this Masterpiece on Luxury Walls">
+            🏛️ View on Wall
+          </button>
+          <button class="btn btn-outline" onclick="generatePrintableGuide(app.activeArt)" title="Print Study Guide / Save PDF">
+            🖨️ Study Sheet
+          </button>
+          <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="modal-tabs-nav">
+        <button class="tab-nav-btn active" data-modal-tab="history">
+          📖 Historical Odyssey
+        </button>
+        <button class="tab-nav-btn" data-modal-tab="masterclass">
+          🎨 Beginner Masterclass
+        </button>
+        <button class="tab-nav-btn" data-modal-tab="demo">
+          🎬 Live Painting Demo
+        </button>
+        <button class="tab-nav-btn" data-modal-tab="ideas">
+          🖼️ Masterpiece Ideas (4)
+        </button>
+        <button class="tab-nav-btn" data-modal-tab="studio">
+          🖌️ Interactive Painting Studio
+        </button>
+      </div>
+
+      <!-- Modal Body Content -->
+      <div class="modal-body">
+        <!-- Tab 1: Historical Odyssey -->
+        <div class="modal-tab-content active" id="tab-history">
+          <div class="history-grid">
+            <div class="history-card full-width">
+              <h4>📜 Genesis & Mythological Origins</h4>
+              <p id="historyOrigin"></p>
+            </div>
+            <div class="history-card">
+              <h4>👑 Royal Courts & Patron Lineages</h4>
+              <p id="historyPatrons"></p>
+            </div>
+            <div class="history-card">
+              <h4>🪷 Sacred Symbolism & Iconography</h4>
+              <p id="historySymbolism"></p>
+            </div>
+            <div class="history-card">
+              <h4>🎨 Styles & Canonical Techniques</h4>
+              <p id="historyStyles"></p>
+            </div>
+            <div class="history-card">
+              <h4>🌟 Revered Living Masters</h4>
+              <p id="historyMasters"></p>
+            </div>
+            <div class="history-card full-width">
+              <h4>🏛️ Global Museum Recognition</h4>
+              <p id="historyGlobal"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Beginner Masterclass -->
+        <div class="modal-tab-content" id="tab-masterclass">
+          <div class="masterclass-header">
+            <div>
+              <h3 class="font-display gold-gradient-text">Complete Beginner's Painting Guide</h3>
+              <p id="tutTimeEstimate" style="color: var(--text-muted); font-size: 0.9rem;"></p>
+            </div>
+            <button class="btn btn-gold" onclick="app.switchModalTab('demo')">
+              Watch Demo Step-by-Step
+            </button>
+          </div>
+
+          <div class="supplies-dual-col">
+            <div class="supplies-box">
+              <h4>📦 Beginner Supply Checklist (Household Alternatives):</h4>
+              <ul class="supplies-checklist" id="beginnerSuppliesList"></ul>
+            </div>
+            <div class="supplies-box">
+              <h4>🏺 Traditional Master Materials:</h4>
+              <ul class="supplies-checklist" id="traditionalSuppliesList"></ul>
+            </div>
+          </div>
+
+          <h4 class="palette-section-title">Authentic Color Palette (Click swatch to copy hex code):</h4>
+          <div class="modal-palette-grid" id="modalPaletteRow"></div>
+
+          <h4 class="palette-section-title">6-Phase Chronological Workflow:</h4>
+          <div class="steps-timeline" id="tutorialStepsContainer"></div>
+
+          <div class="protips-alert">
+            <h4>💡 Master Artisan Secrets:</h4>
+            <ul id="proTipsList"></ul>
+          </div>
+        </div>
+
+        <!-- Tab 3: Live Procedural Canvas Demo -->
+        <div class="modal-tab-content" id="tab-demo">
+          <!-- View Mode Switcher -->
+          <div class="demo-mode-switcher">
+            <button class="mode-toggle-btn active" id="btnModeCanvas" onclick="app.setDemoMode('canvas')">
+              🎨 Live Animated Canvas Masterclass
+            </button>
+            <button class="mode-toggle-btn" id="btnModeVideo" onclick="app.setDemoMode('video')">
+              📺 Master Artisan Video Tutorial
+            </button>
+          </div>
+
+          <!-- Mode 1: Live Animated Canvas Masterclass Stage -->
+          <div id="demoCanvasSection" class="demo-section-view active">
+            <!-- Demo Playback Control Bar -->
+            <div class="demo-control-bar">
+              <div class="demo-status-info">
+                <span class="demo-step-badge" id="demoStepCounter">Phase 1 of 6</span>
+                <span class="demo-step-name" id="demoStepDescription">Surface Priming & Margin Setup</span>
+              </div>
+
+              <div class="demo-playback-buttons">
+                <button class="btn btn-gold" id="demoPlayBtn" onclick="kalakritiStudio.toggleDemoPlayback()">
+                  ⏸ Pause
+                </button>
+                <button class="btn btn-outline" onclick="kalakritiStudio.prevStep()" title="Previous Step">
+                  ⏮ Prev
+                </button>
+                <button class="btn btn-outline" onclick="kalakritiStudio.nextStep()" title="Next Step">
+                  ⏭ Next
+                </button>
+                <button class="btn btn-outline" onclick="kalakritiStudio.restartDemo()" title="Replay from Beginning">
+                  🔄 Replay
+                </button>
+                <select class="speed-select" id="demoSpeedSelect" onchange="kalakritiStudio.setSpeed(parseFloat(this.value))">
+                  <option value="1">1x Speed</option>
+                  <option value="2">2x Fast</option>
+                  <option value="4" selected>4x Superfast</option>
+                </select>
+                <button class="btn btn-outline" onclick="app.transferDemoToStudio()" title="Try Painting this on Canvas">
+                  🖌️ Practice in Studio
+                </button>
+              </div>
+            </div>
+
+            <!-- Interactive Stepper Pills -->
+            <div class="demo-stepper-pills" id="demoStepperPills">
+              <!-- Dynamically populated by studio.js / app.js -->
+            </div>
+
+            <!-- Dedicated Demo Canvas Stage -->
+            <div class="demo-canvas-stage">
+              <canvas id="demoPlayerCanvas"></canvas>
+              <!-- Live Floating Tool Overlay -->
+              <div class="canvas-floating-badge" id="demoFloatingBadge">
+                <span class="badge-dot" id="demoToolColorDot"></span>
+                <span id="demoToolName">Bamboo Kalam Nib</span>
+              </div>
+            </div>
+
+            <!-- Teacher's Step-by-Step Instruction Card -->
+            <div class="teacher-masterclass-card">
+              <div class="teacher-header">
+                <div class="teacher-avatar">👨‍🏫</div>
+                <div class="teacher-meta">
+                  <span class="teacher-tag">Master Artisan Live Instruction</span>
+                  <h4 class="teacher-step-title" id="teacherPhaseTitle">Phase 1: Surface Priming & Margin Setup</h4>
+                </div>
+                <div class="teacher-tool-pill" id="teacherToolPill">
+                  <span class="swatch-inline" id="teacherSwatch"></span>
+                  <span id="teacherColorName">Lampblack (#1F1F1F)</span>
+                </div>
+              </div>
+              <p class="teacher-instructions" id="teacherInstructionsText">
+                Loading step guidance...
+              </p>
+              <div class="teacher-protip-inline" id="teacherProTipInline">
+                💡 <strong>Artisan Rule:</strong> <span id="teacherProTipText">Hold the brush at 90 degrees for crisp, continuous folk strokes.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode 2: Master Artisan Video Tutorial -->
+          <div id="demoVideoSection" class="demo-section-view">
+            <div class="video-tutorial-container">
+              <div class="video-player-frame">
+                <iframe id="demoVideoIframe" src="" title="Master Artisan Video Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <!-- Video Chapters Navigation Bar -->
+              <div class="video-chapters-bar" id="videoChaptersBar"></div>
+              <div class="video-info-card">
+                <h3 id="videoArtTitle">Traditional Painting Masterclass</h3>
+                <p id="videoArtDescription">Watch living master artisans demonstrate classical brush grips, natural pigment mixing, and fine detailing in real time.</p>
+                <div class="video-key-takeaways">
+                  <h4>🎓 Key Lessons Taught in this Masterclass:</h4>
+                  <ul id="videoTakeawaysList">
+                    <li>Authentic tool handling (bamboo kalam, squirrel-hair brush, or metal stylus)</li>
+                    <li>Preparing natural pigments with gum arabic and plant extracts</li>
+                    <li>Canonical proportion rules and sacred border construction</li>
+                    <li>Traditional shading, hatching, and final ritual eye-opening ceremony</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Real Masterpiece Ideas & Inspiration Gallery -->
+        <div class="modal-tab-content" id="tab-ideas">
+          <div class="ideas-tab-header">
+            <div>
+              <h3 class="font-display gold-gradient-text" id="ideasTabTitle">Authentic Masterpiece Ideas & Compositions</h3>
+              <p class="ideas-tab-subtitle">Curated traditional motifs, canonical themes, and compositional layouts for learners and collectors.</p>
+            </div>
+            <button class="btn btn-gold" onclick="app.openAIMuseForCurrentArt()">
+              ✨ Generate More with AI Muse
+            </button>
+          </div>
+          <div class="masterpiece-ideas-grid" id="masterpieceIdeasGrid">
+            <!-- Dynamically populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Tab 5: Interactive Painting Studio Sandbox -->
+        <div class="modal-tab-content" id="tab-studio">
+          <div class="studio-container">
+            <!-- Studio Toolbar -->
+            <div class="studio-toolbar">
+              <div class="tools-group">
+                <button class="tool-btn active" data-tool="nib" onclick="setStudioTool('nib', this)">
+                  ✒️ Ink Nib
+                </button>
+                <button class="tool-btn" data-tool="brush" onclick="setStudioTool('brush', this)">
+                  🖌️ Brush
+                </button>
+                <button class="tool-btn" data-tool="dot" onclick="setStudioTool('dot', this)">
+                  🫧 Gond/Bhil Dots
+                </button>
+                <button class="tool-btn" data-tool="hatch" onclick="setStudioTool('hatch', this)">
+                  📐 Kachni Hatch
+                </button>
+                <button class="tool-btn" data-tool="goldLeaf" onclick="setStudioTool('goldLeaf', this)">
+                  ✨ Gold Leaf
+                </button>
+                <button class="tool-btn" data-tool="eraser" onclick="setStudioTool('eraser', this)">
+                  🧹 Eraser
+                </button>
+              </div>
+
+              <div class="brush-size-wrap">
+                <span>Stroke:</span>
+                <input type="range" min="1" max="30" value="4" oninput="kalakritiStudio.brushSize = this.value" />
+              </div>
+
+              <!-- Style Palette -->
+              <div class="palette-swatches-bar" id="studioPaletteBar"></div>
+
+              <div class="canvas-actions-right">
+                <button class="btn btn-outline" onclick="kalakritiStudio.toggleTraceGuide()" title="Toggle Tracing Guidelines">
+                  👁️ Tracing Stencil
+                </button>
+                <button class="btn btn-outline" onclick="kalakritiStudio.undo()" title="Undo">
+                  ↩ Undo
+                </button>
+                <button class="btn btn-outline" onclick="kalakritiStudio.redo()" title="Redo">
+                  ↪ Redo
+                </button>
+                <button class="btn btn-outline" onclick="kalakritiStudio.clearCanvas()" title="Clear Canvas">
+                  🗑️ Clear
+                </button>
+                <button class="btn btn-outline" onclick="app.openStudioWallPreview()" title="Preview Your Painting on Luxury Interior Wall">
+                  🏛️ View on Wall
+                </button>
+                <button class="btn btn-gold" onclick="kalakritiStudio.exportArtworkPNG()" title="Download Framed PNG">
+                  💾 Export Masterpiece
+                </button>
+              </div>
+            </div>
+
+            <!-- Double-Layered Canvas Stage -->
+            <div class="studio-canvas-stage">
+              <canvas id="studioCanvas" class="studio-canvas-layer"></canvas>
+              <canvas id="traceCanvas" class="studio-canvas-layer"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIRTUAL 3D EXHIBITION HALL OVERLAY -->
+  <div class="exhibition-overlay" id="exhibitionHall">
+    <div class="exhibition-topbar">
+      <div>
+        <h3 class="font-display gold-gradient-text">Virtual Royal Palace Exhibition Hall</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Grand Museum Stroll • Step Into India's Sacred Galleries</p>
+      </div>
+      <div style="display:flex; align-items:center; gap: 16px;">
+        <span id="exhibitionCounter" style="color: var(--gold-primary); font-weight:700;">1 / 35</span>
+        <button class="btn btn-icon" id="closeExhibitionBtn">✕</button>
+      </div>
+    </div>
+
+    <div class="exhibition-stage">
+      <button class="exhibition-nav-btn" id="exhibitionPrevBtn">‹</button>
+      <div class="exhibition-artwork-frame">
+        <img src="" alt="" id="exhibitionArtworkImg" />
+        <div class="exhibition-caption-box">
+          <h3 id="exhibitionTitle" style="font-family: var(--font-display); color: var(--gold-light); margin-bottom: 4px;"></h3>
+          <p id="exhibitionState" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;"></p>
+          <p id="exhibitionDescription" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;"></p>
+        </div>
+      </div>
+      <button class="exhibition-nav-btn" id="exhibitionNextBtn">›</button>
+    </div>
+  </div>
+
+  <!-- FAVORITES (MY CURATION) DRAWER -->
+  <div class="drawer-overlay" id="favoritesDrawer">
+    <div class="drawer-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
+        <h3 class="font-display gold-gradient-text">My Curated Gallery</h3>
+        <button class="btn btn-icon" id="favDrawerCloseBtn">✕</button>
+      </div>
+      <div id="favoritesList" style="flex:1; overflow-y:auto;"></div>
+    </div>
+  </div>
+
+  <!-- ART SOUL QUIZ MODAL -->
+  <div class="modal-overlay" id="quizModal">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <div class="modal-hero-bar" style="grid-template-columns: 1fr auto; padding: 20px 28px;">
+        <div>
+          <span style="color: var(--gold-primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Aesthetic Divination</span>
+          <h3 class="font-display gold-gradient-text" style="font-size: 1.5rem;">Discover Your Indian Art Soul</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeQuizModal()">✕</button>
+      </div>
+
+      <div class="modal-body" id="quizBody">
+        <!-- Rendered dynamically by quiz.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- AI ARTISAN MUSE MODAL -->
+  <div class="modal-overlay" id="aiMuseModal">
+    <div class="modal-dialog ai-muse-dialog">
+      <div class="modal-hero-bar ai-muse-hero-bar">
+        <div class="ai-muse-icon">✨</div>
+        <div class="modal-hero-info">
+          <h2 class="modal-hero-title gold-gradient-text">AI Artisan Muse • Generative Idea Studio</h2>
+          <p class="ai-muse-desc">Generate historically faithful Indian painting concepts, symbolic narratives, and mineral color harmonies instantly.</p>
+        </div>
+        <button class="modal-close-btn" onclick="app.closeAIMuseModal()" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="ai-muse-body">
+        <div class="ai-muse-controls-grid">
+          <div class="ai-form-group">
+            <label>🎨 Select Art Tradition</label>
+            <select id="aiArtSelect" class="ai-select"></select>
+          </div>
+          <div class="ai-form-group">
+            <label>🪷 Creative Theme</label>
+            <select id="aiThemeSelect" class="ai-select">
+              <option value="nature">Sacred Flora, Fauna & Forest Spirits</option>
+              <option value="mythology">Mythological Epics & Deities</option>
+              <option value="tribal_life">Tribal Daily Life & Festivities</option>
+              <option value="cosmos">Cosmic Mandalas & Sacred Geometry</option>
+              <option value="contemporary_folk">Modern World in Folk Art Vision</option>
+            </select>
+          </div>
+          <div class="ai-form-group">
+            <label>🎓 Experience Level</label>
+            <select id="aiSkillSelect" class="ai-select">
+              <option value="beginner">Beginner (Minimalist & Flat Color)</option>
+              <option value="intermediate" selected>Intermediate (Balanced Hatching)</option>
+              <option value="master">Master Artisan (Complex Filigree & Gold)</option>
+            </select>
+          </div>
+          <div class="ai-form-group full-width">
+            <label>💡 Custom Creative Seed / Keywords (Optional)</label>
+            <input type="text" id="aiCustomSeedInput" class="ai-input" placeholder="e.g. Peacock dancing under rain clouds with lotus lake..." />
+          </div>
+        </div>
+
+        <div class="ai-action-row">
+          <button class="btn btn-gold ai-generate-btn" id="btnGenerateAIIdea" onclick="app.generateAIIdea()">
+            ✨ Generate Masterpiece Idea
+          </button>
+        </div>
+
+        <!-- AI Generated Result Container -->
+        <div class="ai-result-card" id="aiResultCard" style="display: none;">
+          <div class="ai-result-header">
+            <div>
+              <span class="ai-badge" id="aiResultBadge">Mithila Art • Beginner</span>
+              <h3 class="ai-concept-title" id="aiResultTitle">Concept Title</h3>
+              <p class="ai-concept-native" id="aiResultNative">देवनागरी शीर्षक</p>
+            </div>
+            <button class="btn btn-gold" id="btnApplyAIToStudio" onclick="app.applyAIIdeaToStudio()">
+              🖌️ Open in Painting Studio
+            </button>
+          </div>
+
+          <div class="ai-narrative-box">
+            <h4>📜 Philosophical & Mythological Narrative:</h4>
+            <p id="aiResultNarrative">Loading story...</p>
+          </div>
+
+          <div class="ai-blueprint-box">
+            <h4>📐 Composition Blueprint & Layout Rules:</h4>
+            <ul id="aiResultBlueprint"></ul>
+          </div>
+
+          <div class="ai-palette-box">
+            <h4>🎨 Canonical Mineral Color Harmony:</h4>
+            <div class="ai-palette-swatches" id="aiResultPalette"></div>
+          </div>
+
+          <div class="ai-steps-box">
+            <h4>🛠️ Step-by-Step Artisan Execution Strategy:</h4>
+            <div class="ai-execution-timeline" id="aiResultSteps"></div>
+          </div>
+
+          <div class="ai-tips-box">
+            <h4>💡 Master Artisan Secrets:</h4>
+            <ul id="aiResultTips"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIRTUAL HERITAGE WALL / AR LIVING ROOM PREVIEW MODAL -->
+  <div class="modal-overlay" id="wallPreviewModal">
+    <div class="modal-dialog wall-preview-dialog">
+      <div class="modal-hero-bar wall-hero-bar">
+        <div class="wall-hero-info">
+          <span class="wall-tag">Virtual Living Room Simulator</span>
+          <h2 class="modal-hero-title gold-gradient-text" id="wallArtTitle">Masterpiece on Wall Preview</h2>
+          <p id="wallArtSubtitle" style="color: var(--text-muted); font-size: 0.88rem;">Visualize traditional Indian heritage art inside luxury architectural interiors.</p>
+        </div>
+        <div class="wall-top-actions">
+          <button class="btn btn-gold" onclick="wallPreviewer.exportWallMockup()">
+            📸 Save Wall Mockup
+          </button>
+          <button class="modal-close-btn" onclick="wallPreviewer.close()" aria-label="Close modal">✕</button>
+        </div>
+      </div>
+
+      <div class="wall-body-content">
+        <!-- Living Room Stage View -->
+        <div class="wall-stage-container room-haveli light-spotlight" id="wallStageContainer">
+          <div class="wall-ambient-shadow"></div>
+          <div class="wall-lamp-glow light-spotlight" id="wallLampGlow"></div>
+          
+          <!-- Framed Artwork on Wall -->
+          <div class="wall-frame-wrapper frame-gold size-collector" id="wallFrameWrapper">
+            <div class="wall-matboard">
+              <img src="assets/images/madhubani.jpg" alt="Masterpiece" id="wallArtworkImage" />
+            </div>
+            <div class="wall-brass-plaque" id="wallBrassPlaque">
+              <span id="wallPlaqueText">KALAKRITI HERITAGE COLLECTION</span>
+            </div>
+          </div>
+
+          <!-- Room Interior Furniture Decor Silhouette -->
+          <div class="wall-furniture-credenza"></div>
+        </div>
+
+        <!-- Customization Controls Bar -->
+        <div class="wall-controls-bar">
+          <div class="wall-control-group">
+            <label>🏰 Room Interior</label>
+            <div class="wall-pill-group">
+              <button class="wall-pill active" data-room-preset="haveli" onclick="wallPreviewer.setRoom('haveli')">Royal Haveli</button>
+              <button class="wall-pill" data-room-preset="modern" onclick="wallPreviewer.setRoom('modern')">Modern Luxury</button>
+              <button class="wall-pill" data-room-preset="salon" onclick="wallPreviewer.setRoom('salon')">Collector's Salon</button>
+              <button class="wall-pill" data-room-preset="verandah" onclick="wallPreviewer.setRoom('verandah')">Verandah</button>
+            </div>
+          </div>
+
+          <div class="wall-control-group">
+            <label>🎨 Wall Paint</label>
+            <div class="wall-color-swatches">
+              <button class="wall-color-btn" style="background: #F5F0E6;" onclick="wallPreviewer.setWallColor('#F5F0E6')" title="Ivory Cream"></button>
+              <button class="wall-color-btn" style="background: #8C4028;" onclick="wallPreviewer.setWallColor('#8C4028')" title="Terracotta Red"></button>
+              <button class="wall-color-btn" style="background: #1B4332;" onclick="wallPreviewer.setWallColor('#1B4332')" title="Royal Emerald"></button>
+              <button class="wall-color-btn" style="background: #1E293B;" onclick="wallPreviewer.setWallColor('#1E293B')" title="Deep Indigo"></button>
+              <button class="wall-color-btn" style="background: #D4C5A9;" onclick="wallPreviewer.setWallColor('#D4C5A9')" title="Warm Sandstone"></button>
+              <button class="wall-color-btn" style="background: #3E2723;" onclick="wallPreviewer.setWallColor('#3E2723')" title="Raw Umber"></button>
+            </div>
+          </div>
+
+          <div class="wall-control-group">
+            <label>🖼️ Frame Finish</label>
+            <div class="wall-pill-group">
+              <button class="wall-pill active" data-frame-style="gold" onclick="wallPreviewer.setFrameStyle('gold')">24K Gold Leaf</button>
+              <button class="wall-pill" data-frame-style="teak" onclick="wallPreviewer.setFrameStyle('teak')">Teak Wood</button>
+              <button class="wall-pill" data-frame-style="minimal" onclick="wallPreviewer.setFrameStyle('minimal')">Floating Black</button>
+            </div>
+          </div>
+
+          <div class="wall-control-group">
+            <label>💡 Gallery Lighting</label>
+            <div class="wall-pill-group">
+              <button class="wall-pill active" data-wall-light="spotlight" onclick="wallPreviewer.setLighting('spotlight')">Museum Spotlight</button>
+              <button class="wall-pill" data-wall-light="warm" onclick="wallPreviewer.setLighting('warm')">Warm Amber</button>
+              <button class="wall-pill" data-wall-light="daylight" onclick="wallPreviewer.setLighting('daylight')">Natural Sun</button>
+            </div>
+          </div>
+
+          <div class="wall-control-group">
+            <label>📐 Canvas Scale</label>
+            <div class="wall-pill-group">
+              <button class="wall-pill" data-art-size="compact" onclick="wallPreviewer.setSize('compact')">30x40 cm</button>
+              <button class="wall-pill active" data-art-size="collector" onclick="wallPreviewer.setSize('collector')">60x80 cm</button>
+              <button class="wall-pill" data-art-size="grand" onclick="wallPreviewer.setSize('grand')">90x120 cm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background: var(--bg-primary); border-top: 1px solid var(--border-subtle); padding: 50px 0 30px 0; margin-top: 60px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--gold-light); margin-bottom: 4px;">KALAKRITI (कलाकृति)</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 500px;">
+          The National Digital Learning Platform & Gallery dedicated to preserving and teaching all 35 traditional art forms of India. Empowering next-generation artisans worldwide.
+        </p>
+      </div>
+      <div style="text-align: right; color: var(--text-muted); font-size: 0.85rem;">
+        <p>100% Public Heritage & Educational Masterclasses</p>
+        <p style="color: var(--gold-primary); font-weight: 600; margin-top: 4px;">Protected under Geographic Indications (GI) of India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/artData.js"></script>
+  <script src="js/aiMuse.js"></script>
+  <script src="js/wallPreview.js"></script>
+  <script src="js/studio.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/printGuide.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Interactive Helper Scripts for Studio & Quiz -->
+  <script>
+    function setStudioTool(toolName, btnElem) {
+      window.kalakritiStudio.currentTool = toolName;
+      document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+      if (btnElem) btnElem.classList.add('active');
+    }
+
+    // Connect procedural demo step callbacks to the UI status badges
+    window.kalakritiStudio.onStepChangeCallback = (cur, total, name) => {
+      const badge = document.getElementById('demoStepCounter');
+      const desc = document.getElementById('demoStepDescription');
+      if (badge) badge.textContent = `Step ${cur} of ${total}`;
+      if (desc) desc.textContent = name;
+    };
+
+    // Quiz UI Controllers
+    function openQuizModal() {
+      window.artSoulQuiz.reset();
+      renderQuizQuestion();
+      document.getElementById('quizModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeQuizModal() {
+      document.getElementById('quizModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function renderQuizQuestion() {
+      const body = document.getElementById('quizBody');
+      const qIdx = window.artSoulQuiz.currentQuestionIdx;
+      const q = ART_QUIZ_QUESTIONS[qIdx];
+
+      if (!q) return;
+
+      body.innerHTML = `
+        <div style="margin-bottom: 24px;">
+          <div style="font-size: 0.8rem; color: var(--gold-primary); font-weight:700; margin-bottom: 6px;">
+            Question ${qIdx + 1} of ${ART_QUIZ_QUESTIONS.length}
+          </div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 4px;">${q.question}</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">${q.subtitle}</p>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap: 12px;">
+          ${q.options.map((opt, idx) => `
+            <button class="btn btn-outline" style="justify-content: flex-start; padding: 14px 18px; text-align: left;" onclick="handleQuizAnswer(${idx})">
+              <span style="font-size: 20px; margin-right: 12px;">${opt.icon}</span>
+              <span style="font-size: 0.95rem;">${opt.text}</span>
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function handleQuizAnswer(optionIdx) {
+      const result = window.artSoulQuiz.recordAnswer(optionIdx);
+      if (result) {
+        renderQuizResult(result);
+      } else {
+        renderQuizQuestion();
+      }
+    }
+
+    function renderQuizResult(result) {
+      const body = document.getElementById('quizBody');
+      body.innerHTML = `
+        <div style="text-align: center; padding: 20px 0;">
+          <div style="font-size: 48px; margin-bottom: 12px;">🪷</div>
+          <span style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold-primary); color: var(--gold-light); padding: 4px 14px; border-radius: 9999px; font-weight: 700; font-size: 0.85rem;">
+            ${result.matchPercentage}% SOUL RESONANCE
+          </span>
+          <h2 class="gold-gradient-text font-display" style="font-size: 2rem; margin: 16px 0 8px 0;">
+            ${result.art.title}
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; max-width: 480px; margin: 0 auto 24px auto;">
+            ${result.reason}
+          </p>
+
+          <div style="display:flex; gap: 14px; justify-content:center;">
+            <button class="btn btn-gold" onclick="closeQuizModal(); app.openArtModal('${result.art.id}', 'masterclass')">
+              🎨 Start ${result.art.title.split(' ')[0]} Masterclass
+            </button>
+            <button class="btn btn-outline" onclick="openQuizModal()">
+              🔄 Retake Quiz
+            </button>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
